@@ -71,7 +71,7 @@ func PipeData(dict : Dictionary):
 										s_node.send_event("Double_Self_Shot")
 									else:
 										s_node.send_event("Double_Self_Death")
-										disable_continious = true
+										disable_continious = true	
 								else:
 									if (properties.health_current>1):
 										s_node.send_event("Single_Self_Shot")
@@ -83,7 +83,7 @@ func PipeData(dict : Dictionary):
 									if (properties.health_current>2):
 										s_node.send_event("Double_Dealer_Shot")
 									else:
-										s_node.send_event("Double_Dealer_Death")	
+										s_node.send_event("Double_Dealer_Death")
 										disable_continious = true
 								else:
 									if (properties.health_current>1):

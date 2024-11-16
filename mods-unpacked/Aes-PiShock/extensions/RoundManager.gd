@@ -10,7 +10,6 @@ var medicine_taken = false
 var is_player_turn = false
 var cuff_zap = true
 var disable_continious = false
-
 var s_node
 var c_node
 
@@ -36,6 +35,7 @@ func _process(delta):
 	if (playerCuffed and cuff_zap and not disable_continious):
 		cuff_zap = false
 		s_node.send_event("Handcuffed")
+	
 	
 	super(delta)
 	pass

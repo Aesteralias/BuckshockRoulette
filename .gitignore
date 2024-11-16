@@ -1,0 +1,25 @@
+
+/.assets
+/.godot
+/addons
+/audio
+/fonts
+/GodotRetro
+/instances
+/localization
+/main player
+/materials
+/misc
+/models
+/mod-loader-assets
+/multiplayer
+/scenes
+/scripts
+/textures
+project.godot
+ModConfig.tscn
+icon.png.import
+icon.png
+gdre_export.log
+default_bus_layout.tres
+BRML.cfg
