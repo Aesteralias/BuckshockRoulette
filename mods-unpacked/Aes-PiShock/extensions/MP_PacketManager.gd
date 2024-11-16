@@ -7,6 +7,7 @@ var used_meds = false
 var printing_time = true
 var properties = null
 var socket_number = null
+var disable_continious = false
 var s_node
 var c_node
 
@@ -35,8 +36,12 @@ func _process(_delta):
 	
 	
 	if properties != null:
+		if (properties.health_current>0):
+			disable_continious = false
+		else:
+			disable_continious = true
 		if (properties.is_jammed):
-				if (!jam_lock):
+				if (!jam_lock and !disable_continious):
 					#print("Jammed")
 					jam_lock = true
 					s_node.send_event("Jammed")
@@ -65,23 +70,27 @@ func PipeData(dict : Dictionary):
 									if (properties.health_current>2):
 										s_node.send_event("Double_Self_Shot")
 									else:
-										s_node.send_event("Double_Self_Death")	
+										s_node.send_event("Double_Self_Death")
+										disable_continious = true
 								else:
 									if (properties.health_current>1):
 										s_node.send_event("Single_Self_Shot")
 									else:
 										s_node.send_event("Single_Self_Death")
+										disable_continious = true
 							else:
 								if (dict.barrel_sawed_off):
 									if (properties.health_current>2):
 										s_node.send_event("Double_Dealer_Shot")
 									else:
 										s_node.send_event("Double_Dealer_Death")	
+										disable_continious = true
 								else:
 									if (properties.health_current>1):
 										s_node.send_event("Single_Dealer_Shot")
 									else:
 										s_node.send_event("Single_Dealer_Death")
+										disable_continious = true
 							print("Shot")
 					"interact with item":
 						if (dict.socket_number==socket_number):
