@@ -1,0 +1,1603 @@
+[gd_scene load_steps=8 format=3 uid="uid://cb47vlvvuaja8"]
+
+[ext_resource type="Script" path="res://mods-unpacked/Aes-PiShock/ModConfig.gd" id="1_kf38v"]
+[ext_resource type="Script" path="res://mods-unpacked/Aes-PiShock/control_checkbox.gd" id="2_n0yl4"]
+[ext_resource type="Script" path="res://mods-unpacked/Aes-PiShock/control_line.gd" id="2_ot1jq"]
+[ext_resource type="Script" path="res://mods-unpacked/Aes-PiShock/control_dropdown.gd" id="3_jo37t"]
+[ext_resource type="Script" path="res://mods-unpacked/Aes-PiShock/Reload_Button.gd" id="4_1vlar"]
+[ext_resource type="Script" path="res://mods-unpacked/Aes-PiShock/Reset_Timer.gd" id="5_vnotw"]
+[ext_resource type="Script" path="res://mods-unpacked/Aes-PiShock/control_menu_c.gd" id="10_5t15v"]
+
+[node name="ModConfig" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_kf38v")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="."]
+layout_mode = 0
+offset_right = 789.0
+offset_bottom = 481.0
+dragger_visibility = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VSplitContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VSplitContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Config For Shockgun Roulette"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VSplitContainer/VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Util" type="HBoxContainer" parent="VSplitContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="VSplitContainer/VBoxContainer/VBoxContainer2/Util"]
+layout_mode = 2
+text = "Multishock Websocket AuthCode: "
+
+[node name="AuthKey" type="LineEdit" parent="VSplitContainer/VBoxContainer/VBoxContainer2/Util"]
+layout_mode = 2
+max_length = 32
+expand_to_text_length = true
+clear_button_enabled = true
+script = ExtResource("2_ot1jq")
+
+[node name="Label2" type="Label" parent="VSplitContainer/VBoxContainer/VBoxContainer2/Util"]
+layout_mode = 2
+text = "  Port: "
+
+[node name="Port" type="LineEdit" parent="VSplitContainer/VBoxContainer/VBoxContainer2/Util"]
+layout_mode = 2
+script = ExtResource("2_ot1jq")
+
+[node name="Reload Button" type="Button" parent="VSplitContainer/VBoxContainer/VBoxContainer2/Util"]
+layout_mode = 2
+text = "Ping Multishock for Devices"
+script = ExtResource("4_1vlar")
+
+[node name="Timer" type="Timer" parent="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button"]
+one_shot = true
+script = ExtResource("5_vnotw")
+
+[node name="MarginContainer2" type="MarginContainer" parent="VSplitContainer/VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VSplitContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VSplitContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Event Configs:"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="VSplitContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "[Enabled]"
+
+[node name="Label3" type="Label" parent="VSplitContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "[Operation]"
+
+[node name="Label4" type="Label" parent="VSplitContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "[Duration]"
+
+[node name="Label5" type="Label" parent="VSplitContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "[Intensity]"
+
+[node name="Label6" type="Label" parent="VSplitContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "[Delay]"
+
+[node name="Label7" type="Label" parent="VSplitContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "[Shocker
+Selection]"
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="VSplitContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "[Shockers
+Active]"
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="VSplitContainer/VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VSplitContainer"]
+layout_mode = 2
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Self" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Shooting Yourself"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Single_Self_Shot" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Shot"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Take 1 Damage:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Shot"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Shot"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Shot"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Shot"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Shot"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Shot"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Shot"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[node name="Double_Self_Shot" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Shot"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Take 2 Damage:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Shot"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Shot"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Shot"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Shot"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Shot"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Shot"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Shot"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[node name="Single_Self_Death" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Death"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Take 1 Damage and Die:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Death"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Death"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Death"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Death"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Death"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Death"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Death"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[node name="Double_Self_Death" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Death"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Take 2 Damage and Die:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Death"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Death"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Death"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Death"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Death"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Death"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Death"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[node name="Dealer" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Someone Else Shoots You"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Single_Dealer_Shot" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Shot"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Take 1 Damage:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Shot"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Shot"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Shot"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Shot"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Shot"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Shot"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Shot"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[node name="Double_Dealer_Shot" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Shot"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Take 1 Damage:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Shot"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Shot"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Shot"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Shot"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Shot"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Shot"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Shot"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[node name="Single_Dealer_Death" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Death"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Take 1 Damage and Die:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Death"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Death"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Death"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Death"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Death"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Death"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Death"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[node name="Double_Dealer_Death" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Death"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Take 2 Damage and Die:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Death"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Death"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Death"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Death"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Death"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Death"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Death"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[node name="Using Items" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Using Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Adrenaline_Use" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Adrenaline_Use"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Use Adrenaline:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Adrenaline_Use"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Adrenaline_Use"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Adrenaline_Use"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Adrenaline_Use"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Adrenaline_Use"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Adrenaline_Use"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Adrenaline_Use"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[node name="Pill_Damage" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Damage"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Pill Damage:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Damage"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Damage"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Damage"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Damage"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Damage"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Damage"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Damage"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[node name="Pill_Death" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Death"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Pill Death:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Death"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Death"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Death"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Death"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Death"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Death"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Death"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[node name="Handcuff_Use" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handcuff_Use"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Use Handcuff:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handcuff_Use"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handcuff_Use"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handcuff_Use"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handcuff_Use"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handcuff_Use"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handcuff_Use"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handcuff_Use"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[node name="Handcuffed" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handcuffed"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Handcuffed:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handcuffed"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handcuffed"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handcuffed"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handcuffed"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handcuffed"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handcuffed"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handcuffed"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[node name="Jammer_Use" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Jammer_Use"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Use Jammer:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Jammer_Use"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Jammer_Use"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Jammer_Use"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Jammer_Use"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Jammer_Use"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Jammer_Use"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Jammer_Use"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[node name="Jammed" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Jammed"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Jammed:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Jammed"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Jammed"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Jammed"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Jammed"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Jammed"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Jammed"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Jammed"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[node name="Beer_Use" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Beer_Use"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Drink Beer:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Beer_Use"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Beer_Use"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Beer_Use"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Beer_Use"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Beer_Use"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Beer_Use"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Beer_Use"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[node name="Cigarette_Use" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Cigarette_Use"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Smoke Cigarette:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Cigarette_Use"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Cigarette_Use"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Cigarette_Use"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Cigarette_Use"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Cigarette_Use"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Cigarette_Use"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Cigarette_Use"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[node name="Magnifying_Use" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Magnifying_Use"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Use Magnifying Glass:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Magnifying_Use"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Magnifying_Use"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Magnifying_Use"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Magnifying_Use"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Magnifying_Use"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Magnifying_Use"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Magnifying_Use"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[node name="Phone_Use" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Phone_Use"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Use Phone:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Phone_Use"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Phone_Use"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Phone_Use"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Phone_Use"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Phone_Use"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Phone_Use"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Phone_Use"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[node name="Handsaw_Use" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handsaw_Use"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Use Handsaw:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handsaw_Use"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handsaw_Use"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handsaw_Use"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handsaw_Use"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handsaw_Use"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handsaw_Use"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Handsaw_Use"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[node name="Inverter_Use" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Inverter_Use"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Use Inverter:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Inverter_Use"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Inverter_Use"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Inverter_Use"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Inverter_Use"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Inverter_Use"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Inverter_Use"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Inverter_Use"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[node name="Reverse_Use" type="HBoxContainer" parent="VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Event" type="Label" parent="VSplitContainer/ScrollContainer/VBoxContainer/Reverse_Use"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Use Remote:"
+horizontal_alignment = 2
+
+[node name="Enabled" type="CheckBox" parent="VSplitContainer/ScrollContainer/VBoxContainer/Reverse_Use"]
+layout_mode = 2
+script = ExtResource("2_n0yl4")
+
+[node name="Operation" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Reverse_Use"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Shock"
+popup/item_0/id = 0
+popup/item_1/text = "Vibrate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep"
+popup/item_2/id = 2
+script = ExtResource("3_jo37t")
+
+[node name="Duration" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Reverse_Use"]
+layout_mode = 2
+placeholder_text = "0.1-15"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Intensity" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Reverse_Use"]
+layout_mode = 2
+placeholder_text = "1-100"
+script = ExtResource("2_ot1jq")
+
+[node name="Delay" type="LineEdit" parent="VSplitContainer/ScrollContainer/VBoxContainer/Reverse_Use"]
+layout_mode = 2
+placeholder_text = "0.1-10"
+max_length = 4
+script = ExtResource("2_ot1jq")
+
+[node name="Shockers" type="OptionButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Reverse_Use"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Random"
+popup/item_1/id = 1
+script = ExtResource("3_jo37t")
+
+[node name="Device_Ids" type="MenuButton" parent="VSplitContainer/ScrollContainer/VBoxContainer/Reverse_Use"]
+layout_mode = 2
+text = "Devices []"
+script = ExtResource("10_5t15v")
+
+[connection signal="focus_exited" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/AuthKey" to="VSplitContainer/VBoxContainer/VBoxContainer2/Util/AuthKey" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/AuthKey" to="VSplitContainer/VBoxContainer/VBoxContainer2/Util/AuthKey" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Port" to="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Port" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Port" to="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Port" method="_on_text_changed"]
+[connection signal="pressed" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button" to="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" method="_on_button_pressed"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Shot/Device_Ids" method="_on_timer_timeout"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Shot/Device_Ids" method="_on_timer_timeout"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Death/Device_Ids" method="_on_timer_timeout"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Death/Device_Ids" method="_on_timer_timeout"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Shot/Device_Ids" method="_on_timer_timeout"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Shot/Device_Ids" method="_on_timer_timeout"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Death/Device_Ids" method="_on_timer_timeout"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Death/Device_Ids" method="_on_timer_timeout"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Adrenaline_Use/Device_Ids" method="_on_timer_timeout"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Damage/Device_Ids" method="_on_timer_timeout"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Death/Device_Ids" method="_on_timer_timeout"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Handcuff_Use/Device_Ids" method="_on_timer_timeout"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Handcuffed/Device_Ids" method="_on_timer_timeout"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Jammer_Use/Device_Ids" method="_on_timer_timeout"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Jammed/Device_Ids" method="_on_timer_timeout"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Beer_Use/Device_Ids" method="_on_timer_timeout"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Cigarette_Use/Device_Ids" method="_on_timer_timeout"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Magnifying_Use/Device_Ids" method="_on_timer_timeout"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Phone_Use/Device_Ids" method="_on_timer_timeout"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Handsaw_Use/Device_Ids" method="_on_timer_timeout"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Inverter_Use/Device_Ids" method="_on_timer_timeout"]
+[connection signal="timeout" from="VSplitContainer/VBoxContainer/VBoxContainer2/Util/Reload Button/Timer" to="VSplitContainer/ScrollContainer/VBoxContainer/Reverse_Use/Device_Ids" method="_on_timer_timeout"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Shot/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Shot/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Shot/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Shot/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Shot/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Shot/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Shot/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Shot/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Shot/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Shot/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Shot/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Shot/Delay" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Shot/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Shot/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Shot/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Shot/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Shot/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Shot/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Shot/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Shot/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Shot/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Shot/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Shot/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Shot/Delay" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Death/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Death/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Death/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Death/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Death/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Death/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Death/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Death/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Death/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Death/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Death/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Self_Death/Delay" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Death/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Death/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Death/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Death/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Death/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Death/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Death/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Death/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Death/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Death/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Death/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Self_Death/Delay" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Shot/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Shot/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Shot/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Shot/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Shot/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Shot/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Shot/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Shot/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Shot/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Shot/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Shot/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Shot/Delay" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Shot/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Shot/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Shot/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Shot/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Shot/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Shot/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Shot/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Shot/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Shot/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Shot/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Shot/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Shot/Delay" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Death/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Death/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Death/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Death/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Death/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Death/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Death/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Death/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Death/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Death/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Death/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Single_Dealer_Death/Delay" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Death/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Death/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Death/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Death/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Death/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Death/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Death/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Death/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Death/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Death/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Death/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Double_Dealer_Death/Delay" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Adrenaline_Use/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Adrenaline_Use/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Adrenaline_Use/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Adrenaline_Use/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Adrenaline_Use/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Adrenaline_Use/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Adrenaline_Use/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Adrenaline_Use/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Adrenaline_Use/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Adrenaline_Use/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Adrenaline_Use/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Adrenaline_Use/Delay" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Damage/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Damage/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Damage/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Damage/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Damage/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Damage/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Damage/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Damage/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Damage/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Damage/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Damage/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Damage/Delay" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Death/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Death/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Death/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Death/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Death/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Death/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Death/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Death/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Death/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Death/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Death/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Pill_Death/Delay" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Handcuff_Use/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Handcuff_Use/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Handcuff_Use/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Handcuff_Use/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Handcuff_Use/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Handcuff_Use/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Handcuff_Use/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Handcuff_Use/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Handcuff_Use/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Handcuff_Use/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Handcuff_Use/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Handcuff_Use/Delay" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Handcuffed/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Handcuffed/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Handcuffed/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Handcuffed/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Handcuffed/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Handcuffed/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Handcuffed/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Handcuffed/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Handcuffed/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Handcuffed/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Handcuffed/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Handcuffed/Delay" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Jammer_Use/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Jammer_Use/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Jammer_Use/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Jammer_Use/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Jammer_Use/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Jammer_Use/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Jammer_Use/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Jammer_Use/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Jammer_Use/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Jammer_Use/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Jammer_Use/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Jammer_Use/Delay" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Jammed/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Jammed/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Jammed/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Jammed/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Jammed/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Jammed/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Jammed/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Jammed/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Jammed/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Jammed/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Jammed/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Jammed/Delay" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Beer_Use/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Beer_Use/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Beer_Use/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Beer_Use/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Beer_Use/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Beer_Use/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Beer_Use/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Beer_Use/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Beer_Use/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Beer_Use/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Beer_Use/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Beer_Use/Delay" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Cigarette_Use/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Cigarette_Use/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Cigarette_Use/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Cigarette_Use/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Cigarette_Use/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Cigarette_Use/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Cigarette_Use/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Cigarette_Use/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Cigarette_Use/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Cigarette_Use/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Cigarette_Use/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Cigarette_Use/Delay" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Magnifying_Use/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Magnifying_Use/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Magnifying_Use/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Magnifying_Use/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Magnifying_Use/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Magnifying_Use/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Magnifying_Use/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Magnifying_Use/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Magnifying_Use/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Magnifying_Use/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Magnifying_Use/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Magnifying_Use/Delay" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Phone_Use/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Phone_Use/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Phone_Use/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Phone_Use/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Phone_Use/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Phone_Use/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Phone_Use/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Phone_Use/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Phone_Use/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Phone_Use/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Phone_Use/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Phone_Use/Delay" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Handsaw_Use/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Handsaw_Use/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Handsaw_Use/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Handsaw_Use/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Handsaw_Use/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Handsaw_Use/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Handsaw_Use/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Handsaw_Use/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Handsaw_Use/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Handsaw_Use/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Handsaw_Use/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Handsaw_Use/Delay" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Inverter_Use/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Inverter_Use/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Inverter_Use/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Inverter_Use/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Inverter_Use/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Inverter_Use/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Inverter_Use/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Inverter_Use/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Inverter_Use/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Inverter_Use/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Inverter_Use/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Inverter_Use/Delay" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Reverse_Use/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Reverse_Use/Duration" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Reverse_Use/Duration" to="VSplitContainer/ScrollContainer/VBoxContainer/Reverse_Use/Duration" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Reverse_Use/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Reverse_Use/Intensity" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Reverse_Use/Intensity" to="VSplitContainer/ScrollContainer/VBoxContainer/Reverse_Use/Intensity" method="_on_text_changed"]
+[connection signal="focus_exited" from="VSplitContainer/ScrollContainer/VBoxContainer/Reverse_Use/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Reverse_Use/Delay" method="_on_focus_exited"]
+[connection signal="text_changed" from="VSplitContainer/ScrollContainer/VBoxContainer/Reverse_Use/Delay" to="VSplitContainer/ScrollContainer/VBoxContainer/Reverse_Use/Delay" method="_on_text_changed"]
