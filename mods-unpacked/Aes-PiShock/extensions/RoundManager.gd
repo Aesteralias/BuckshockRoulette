@@ -9,6 +9,7 @@ var current_shells_loaded
 var medicine_taken = false
 var is_player_turn = false
 var cuff_zap = true
+var disable_continious = false
 
 var s_node
 var c_node
@@ -32,7 +33,7 @@ func _process(delta):
 		check_health_loss()
 		pass
 		
-	if (playerCuffed and cuff_zap):
+	if (playerCuffed and cuff_zap and not disable_continious):
 		cuff_zap = false
 		s_node.send_event("Handcuffed")
 	
@@ -108,6 +109,8 @@ func check_health_loss():
 		if (medicine_taken):
 			if (health_player<=0):
 				s_node.send_event("Pill_Death")
+				check_locked = true
+				disable_continious = true
 			else:
 				s_node.send_event("Pill_Damage")
 		else:
@@ -117,6 +120,7 @@ func check_health_loss():
 						print("Double Self Death")
 						s_node.send_event("Double_Self_Death")
 						check_locked = true
+						disable_continious = true
 					else:
 						print("Double Self Damage")
 						s_node.send_event("Double_Self_Shot")
@@ -125,6 +129,7 @@ func check_health_loss():
 						print("Double Dealer Kill")
 						s_node.send_event("Double_Dealer_Death")
 						check_locked = true
+						disable_continious = true
 					else:
 						print("Double Dealer Shot")
 						s_node.send_event("Double_Dealer_Shot")
@@ -134,6 +139,7 @@ func check_health_loss():
 						print("Single Self Death")
 						s_node.send_event("Single_Self_Death")
 						check_locked = true
+						disable_continious = true
 					else:
 						print("Single Self Damage")
 						s_node.send_event("Single_Self_Shot")
@@ -142,6 +148,7 @@ func check_health_loss():
 						print("Single Dealer Kill")
 						s_node.send_event("Single_Dealer_Death")
 						check_locked = true
+						disable_continious = true
 					else:
 						print("Single Dealer Shot")
 						s_node.send_event("Single_Dealer_Shot")
