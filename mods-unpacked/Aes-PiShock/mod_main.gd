@@ -9,10 +9,6 @@ var translations_dir_path := ""
 
 var ran_main = false
 
-const Socket = preload("res://mods-unpacked/Aes-PiShock/Socket.gd")
-
-# Before v6.1.0
-# func _init(modLoader = ModLoader) -> void:
 func _init() -> void:
 	mod_dir_path = ModLoaderMod.get_unpacked_dir()+(AUTHORNAME_MODNAME_DIR)+"/"
 	# Add extensions
@@ -22,7 +18,6 @@ func install_script_extensions() -> void:
 	extensions_dir_path = mod_dir_path+"extensions/"
 	const extensions = [
 		'RoundManager',
-		#'MP_UserPermissions'
 		'MP_PacketManager'
 	]
 	for extension in extensions:

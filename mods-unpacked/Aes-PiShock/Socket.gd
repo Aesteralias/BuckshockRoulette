@@ -86,7 +86,7 @@ func _ready():
 	else:
 		# Wait for the socket to connect.
 		await get_tree().create_timer(2).timeout
-		socket.send_text("Test Message!")
+		#socket.send_text("Test Message!")
 
 func _process(delta):
 	# Call this in _process or _physics_process. Data transfer and state updates

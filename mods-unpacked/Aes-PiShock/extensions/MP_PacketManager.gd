@@ -7,7 +7,7 @@ var used_meds = false
 var printing_time = true
 var properties = null
 var socket_number = null
-var disable_continious = false
+var round_running = false
 var s_node
 var c_node
 
@@ -37,21 +37,11 @@ func _process(_delta):
 	
 	if properties != null:
 		if (properties.health_current>0):
-			disable_continious = false
-		else:
-			disable_continious = true
-		if (properties.is_jammed):
-				if (!jam_lock and !disable_continious):
-					#print("Jammed")
-					jam_lock = true
-					s_node.send_event("Jammed")
-					jam_delay()
-					pass # constant shock until resolved
-#		for i in range(len(properties.user_inventory)):
-#			if (properties.user_inventory[i] != {} and properties.user_inventory[i] != null):
-#				stored_inventory[i] = int(properties.user_inventory[i].item_id)
-#			else:
-#				stored_inventory[i] = null
+			if (properties.is_jammed and !properties.jammer_checked and !jam_lock and round_running):
+				jam_lock = true
+				s_node.send_event("Jammed")
+				jam_delay()
+				pass
 	super(_delta)
 	pass
 
@@ -59,39 +49,57 @@ func _process(_delta):
 func PipeData(dict : Dictionary):
 	var value_category = dict.values()[0]
 	var value_alias = dict.values()[1]
+	
+	if (value_category=="MP_RoundManager"):
+		if (value_alias == "end turn"):
+			if (dict.user_won_game_at_socket != -1):
+				round_running = false
+		if (value_alias == "first round routine"):
+			round_running = true
+			
 	if (value_category=="MP_UserInstanceProperties"):
 		for instance in instance_handler.instance_property_array:
 			if instance.is_active:
 				match value_alias:
 					"shoot user":
-						if (dict.shooter_socket_target==socket_number and dict.shooter_shell=="live"):
-							if (dict.shooter_socket_self==socket_number):
-								if (dict.barrel_sawed_off):
-									if (properties.health_current>2):
-										s_node.send_event("Double_Self_Shot")
+						if (dict.shooter_socket_target==socket_number):
+							if (dict.shooter_shell == "live"):
+								if (dict.shooter_socket_self==socket_number):
+									if (dict.barrel_sawed_off):
+										if (properties.health_current>2):
+											s_node.send_event("Double_Self_Shot")
+										else:
+											s_node.send_event("Double_Self_Death")
 									else:
-										s_node.send_event("Double_Self_Death")
-										disable_continious = true	
+										if (properties.health_current>1):
+											s_node.send_event("Single_Self_Shot")
+										else:
+											s_node.send_event("Single_Self_Death")
 								else:
-									if (properties.health_current>1):
-										s_node.send_event("Single_Self_Shot")
+									if (dict.barrel_sawed_off):
+										if (properties.health_current>2):
+											s_node.send_event("Double_Dealer_Shot")
+										else:
+											s_node.send_event("Double_Dealer_Death")
 									else:
-										s_node.send_event("Single_Self_Death")
-										disable_continious = true
+										if (properties.health_current>1):
+											s_node.send_event("Single_Dealer_Shot")
+										else:
+											s_node.send_event("Single_Dealer_Death")
+							else:
+								if (dict.shooter_socket_self==socket_number):
+									s_node.send_event("Blank_Self")
+								else:
+									s_node.send_event("Blank_Dealer")
+						elif (dict.shooter_socket_self!=socket_number and dict.shooter_socket_self==socket_number):
+							if (dict.shooter_shell == "blank"):
+								s_node.send_event("Blank_Offense")
 							else:
 								if (dict.barrel_sawed_off):
-									if (properties.health_current>2):
-										s_node.send_event("Double_Dealer_Shot")
-									else:
-										s_node.send_event("Double_Dealer_Death")
-										disable_continious = true
+									s_node.send_event("Double_Offense_Shot")
 								else:
-									if (properties.health_current>1):
-										s_node.send_event("Single_Dealer_Shot")
-									else:
-										s_node.send_event("Single_Dealer_Death")
-										disable_continious = true
-							print("Shot")
+									s_node.send_event("Single_Offense_Shot")
+							
 					"interact with item":
 						if (dict.socket_number==socket_number):
 							print(dict.item_id)
@@ -139,5 +147,8 @@ func print_delay():
 #	used_meds = false
 	
 func jam_delay():
-	await(get_tree().create_timer(1).timeout)
+	var delay = c_node.get_value("JammedTimer","Refresh")
+	if (delay == null):
+		delay = 10
+	await(get_tree().create_timer(delay).timeout)
 	jam_lock = false

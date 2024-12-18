@@ -42,6 +42,13 @@ func save():
 			if (b > 30):
 				b = 30
 			bubble.set_value(get_parent().name,name,b)
+		"Refresh":
+			var b = float(text)
+			if (b < 1):
+				b = 1
+			if (b > 10):
+				b = 10
+			bubble.set_value(get_parent().name,name,b)
 
 func _exit_tree():
 	save()

@@ -106,4 +106,5 @@ func _exit_tree():
 
 
 func _on_timer_timeout():
+	save()
 	load_a()

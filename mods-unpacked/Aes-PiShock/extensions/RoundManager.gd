@@ -9,7 +9,6 @@ var current_shells_loaded
 var medicine_taken = false
 var is_player_turn = false
 var cuff_zap = true
-var disable_continious = false
 var s_node
 var c_node
 
@@ -32,9 +31,6 @@ func _process(delta):
 		check_health_loss()
 		pass
 		
-	if (playerCuffed and cuff_zap and not disable_continious):
-		cuff_zap = false
-		s_node.send_event("Handcuffed")
 	
 	
 	super(delta)
@@ -98,6 +94,12 @@ func LoadShells():
 
 
 func check_health_loss():
+	if (health_player > 0 and health_opponent > 0):
+		if (playerCuffed and cuff_zap):
+			cuff_zap = false
+			s_node.send_event("Handcuffed")
+			cuffed_timeout()
+	
 	if (current_dealer_health > health_opponent):
 		print("Dealer Health:" + str(health_opponent))
 		if (health_opponent <= 0):
@@ -110,7 +112,6 @@ func check_health_loss():
 			if (health_player<=0):
 				s_node.send_event("Pill_Death")
 				check_locked = true
-				disable_continious = true
 			else:
 				s_node.send_event("Pill_Damage")
 		else:
@@ -120,7 +121,6 @@ func check_health_loss():
 						print("Double Self Death")
 						s_node.send_event("Double_Self_Death")
 						check_locked = true
-						disable_continious = true
 					else:
 						print("Double Self Damage")
 						s_node.send_event("Double_Self_Shot")
@@ -129,7 +129,6 @@ func check_health_loss():
 						print("Double Dealer Kill")
 						s_node.send_event("Double_Dealer_Death")
 						check_locked = true
-						disable_continious = true
 					else:
 						print("Double Dealer Shot")
 						s_node.send_event("Double_Dealer_Shot")
@@ -139,7 +138,6 @@ func check_health_loss():
 						print("Single Self Death")
 						s_node.send_event("Single_Self_Death")
 						check_locked = true
-						disable_continious = true
 					else:
 						print("Single Self Damage")
 						s_node.send_event("Single_Self_Shot")
@@ -148,7 +146,6 @@ func check_health_loss():
 						print("Single Dealer Kill")
 						s_node.send_event("Single_Dealer_Death")
 						check_locked = true
-						disable_continious = true
 					else:
 						print("Single Dealer Shot")
 						s_node.send_event("Single_Dealer_Shot")
@@ -209,6 +206,9 @@ func medicine_timeout():
 	print("Medicine Effects Completed")
 	
 func cuffed_timeout():
-	await get_tree().create_timer(1).timeout
+	var delay = c_node.get_value("HandcuffedTimer","Refresh")
+	if (delay == null):
+		delay = 10
+	await(get_tree().create_timer(delay).timeout)
 	cuff_zap = true
 	
