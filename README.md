@@ -24,7 +24,6 @@ Setup: <br/>
 	- (It should be ...Steam/steamapps/common/Buckshot_Roulette/addons)
   - Open the launch parameters of Buckshot and add:
 	- "--script addons/mod_loader/mod_loader_setup.gd --setup-create-override-cfg"
-	  - If this doesn't work, go into addons/mod_loader/mod_loader_setup.gd
   - Launch the game and it should create a godot folder alongside the addons folder
   - Create a mods folder alongside the .exe
 	- It should be ...Steam/steamapps/common/Buckshot_Roulette/Buckshot Roulette_windows/mods
