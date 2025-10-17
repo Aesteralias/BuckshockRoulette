@@ -18,7 +18,8 @@ func install_script_extensions() -> void:
 	extensions_dir_path = mod_dir_path+"extensions/"
 	const extensions = [
 		'RoundManager',
-		'MP_PacketManager'
+		'MP_PacketManager',
+		'Debugging'
 	]
 	for extension in extensions:
 		ModLoaderMod.install_script_extension(extensions_dir_path+extension+".gd")

@@ -1,14 +1,15 @@
 extends Node
 
-
 static var config_values = ConfigFile.new()
 
 var user_base_path = OS.get_user_data_dir()
 
-const config_name = "/Aes-PiShock-config.cfg"
+const config_name = "Aes-PiShock-config.cfg"
+
+var config_path = user_base_path.path_join(config_name)
 
 func _init():
-	var err = config_values.load(user_base_path+config_name)
+	var err = config_values.load(config_path)
 	if (err != OK or !config_values.has_section("Util")): #If it cannot load config, set Default Values
 		config_values.set_value("Util", "AuthKey","")
 		config_values.set_value("Util", "Port", 8765)
@@ -315,5 +316,5 @@ static func set_value(category: String, part: String, value: ):
 
 
 func _exit_tree():
-	print_debug("Aes-PiShock: Saving Config at:"+user_base_path+config_name)
-	config_values.save(user_base_path+config_name)
+	print_debug("Aes-PiShock: Saving Config at:"+config_path)
+	config_values.save(config_path)

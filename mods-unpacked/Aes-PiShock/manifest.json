@@ -1,7 +1,7 @@
 {
 	"name": "PiShock",
 	"namespace": "Aes",
-	"version_number": "1.1.0",
+	"version_number": "1.2.0",
 	"description": "PiShock Integration via Multishock WebSocket",
 	"dependencies": [],
 	"website_url": "",
@@ -20,7 +20,8 @@
 			],
 			"compatible_game_version": [
 				"2.1.0",
-				"2.1.1"
+				"2.1.1",
+				"2.2.0"
 			],
 			"config_schema": {}
 		}
