@@ -1,4 +1,4 @@
-A BRML mod that uses MultiShock Websockets for PiShock Devices <br/>
+A Buckshot Roulette mod that uses MultiShock Websockets for PiShock Devices <br/>
 There has been fairly minimal testing past it not crashing upon light dev use. <br/>
 
 Events are: <br/>
@@ -11,10 +11,10 @@ Events are: <br/>
  <br/>
 
 Requirements:<br/>
-	  - Godot Mod Loader https://github.com/GodotModding/godot-mod-loader/releases
-	Or <br/>
-	  - Buckshot Roulette Mod Loader https://github.com/AGO061/BuckshotRouletteModLoader
-	  - MultiShock https://mshock.akiradev.me/
+- Godot Mod Loader https://github.com/GodotModding/godot-mod-loader/releases <br/>
+Or <br/>
+- Buckshot Roulette Mod Loader https://github.com/AGO061/BuckshotRouletteModLoader
+- MultiShock https://mshock.akiradev.me/
 
 
 Setup: <br/>
